@@ -3,7 +3,28 @@ form {
     margin: 0 auto;
     padding: 20px;
 }
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #0b2135;
+    box-shadow: 0 4px 8px rgba(229, 255, 0, 0.882);
+    position: relative;
+}
+.header h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #c1c711;
+}
 
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
 label {
     display: block;
     margin-bottom: 5px;
