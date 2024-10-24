@@ -1,8 +1,7 @@
-// JavaScript function to dynamically display content based on clicked card
+
 function showContent(type) {
     var contentDiv = document.getElementById('content');
 
-    // Define form content (as HTML string) for each category
     var formContent = `
         <div class="header">
             <h1>Add Complaint - ` + type + `</h1>
@@ -30,12 +29,12 @@ function showContent(type) {
         </form>
     `;
 
-    // Inject form content into the contentDiv
+
     contentDiv.innerHTML = formContent;
 
-    // Show the content div (make it visible)
+
     contentDiv.style.display = 'block';
 
-    // Scroll down to the content
+
     contentDiv.scrollIntoView({ behavior: 'smooth' });
 }

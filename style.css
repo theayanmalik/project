@@ -76,14 +76,13 @@ body {
     padding: 20px;
     background-color: #073642;
     color: white;
-    display: none; /* Hide by default */
+    display: none; 
 }
 
 .content h2 {
     margin-top: 0;
 }
 
-/* Styling for form */
 form {
     max-width: 600px;
     margin: 20px auto;
@@ -122,9 +121,8 @@ input[type="submit"] {
     border-radius: 5px;
 }
 
-/* For mobile responsiveness */
 @media (max-width: 600px) {
     .container {
-        grid-template-columns: 1fr; /* Single column on small screens */
+        grid-template-columns: 1fr; 
     }
 }
