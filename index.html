@@ -1,145 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Complaint System</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #1b5c67;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-        }
-
-      
-        .header {
-            text-align: center;
-            padding: 20px;
-            background-color: #0b2135;
-            box-shadow: 0 4px 8px rgba(229, 255, 0, 0.882);
-            position: relative;
-        }
-
-      
-        .header img {
-            width: 80px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 26px;
-            color: #c1c711;
-        }
-
-      
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-       
-        .card {
-            background-color: #002838;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 6px 20px rgba(203, 205, 153, 0.771);
-            transition: transform 0.3s ease-in-out, background-color 0.3s;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background-color: #d4e118;
-        }
-
-        
-        .card img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #4b4848;
-            margin-bottom: 20px;
-        }
-
-
-        .card p {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .card a {
-            display: inline-block;
-            margin-top: 15px;
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 22px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .card a:hover {
-            color: #ff9933;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-   
+<body>
     <div class="header">
-        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo"> 
+        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo">
         <h1>Student Complaint System</h1>
     </div>
 
     <div class="container">
-        <div class="card">
+        <div class="card" onclick="showContent('academic')">
             <img src="https://img.icons8.com/dusk/64/classroom.png" alt="Academic Issues">
             <p>Academic Issues</p>
-         
-            <a href="document.html">&#8250;&#8250;</a>
+            <a href="document">&#8250;&#8250;</a>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="showContent('hostel')">
             <img src="https://img.icons8.com/dusk/64/sleeping-in-bed.png" alt="Hostel Complaints">
             <p>Hostel Complaints</p>
-           
-            <a href="document.html">&#8250;&#8250;</a>
+            <a href="document">&#8250;&#8250;</a>
         </div>
-        <div class="card">
-            <img src="https://img.icons8.com/dusk/64/m.png" alt="Mess Feedback">
+
+        <div class="card" onclick="showContent('mess')">
+            <img src="https://img.icons8.com/dusk/64/m.png" alt="Mess Issues">
             <p>Mess Issues</p>
-       
-            <a href="document.html">&#8250;&#8250;</a>
+            <a href="document">&#8250;&#8250;</a>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="showContent('library')">
             <img src="https://img.icons8.com/dusk/64/books.png" alt="Library Concerns">
             <p>Library Concerns</p>
-          
-            <a href="document.html">&#8250;&#8250;</a>
+            <a href="document">&#8250;&#8250;</a>
         </div>
-        <div class="card">
-            <img src="https://img.icons8.com/dusk/64/school.png" alt="... Issues">
-            <p>------------</p>
-            
-            <a href="document.html">&#8250;&#8250;</a>
+
+        <div class="card" onclick="showContent('other')">
+            <img src="https://img.icons8.com/dusk/64/school.png" alt="Other Issues">
+            <p>Other Issues</p>
+            <a href="document">&#8250;&#8250;</a>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="showContent('it')">
             <img src="https://img.icons8.com/dusk/64/computer.png" alt="IT Support">
             <p>IT Support</p>
-            
             <a href="document">&#8250;&#8250;</a>
         </div>
     </div>
 
+    <div id="content" class="content"></div>
+
+    <script src="form.js"></script>
 </body>
+
 </html>
