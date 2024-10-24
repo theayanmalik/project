@@ -2,6 +2,11 @@ form {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    color: #ffffff;
+}
+textarea#description {
+    width: 500px;
+    height: 200px;
 }
 .header {
     text-align: center;
@@ -15,6 +20,7 @@ form {
     font-size: 26px;
     color: #c1c711;
 }
+
 
 
 .container {
