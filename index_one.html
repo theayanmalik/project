@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <Header class="header">
+        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo">
+        <h1>Faculty Complaint System</h1>
+    </Header>
+
+    <main class="container">
+        <div class="card" onclick="showContent('Electric Appliances')">
+            <img src="https://imgs.search.brave.com/mzh6Qf5cSqWfnrxDXZooyhefDsUkx2juqzWcdLd81cc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aG9tZXRpcHMuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDEy/LzA2L1Rlc3Qtb3V0/bGV0LVN1bnNldC5q/cGc" alt="Electric Appliances">
+            <p>Electric Appliances</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('Plumbing')">
+            <img src="plumbing.png" alt="Plumbing">
+            <p>Plumbing</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('Internet Issues')">
+            <img src="internet_issues.png" alt="Internet Issues">
+            <p>Internet Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('Others')">
+            <img src="https://img.icons8.com/dusk/64/books.png" alt="Others">
+            <p>Other Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+    </main>
+
+    <div id="content" class="content"></div>
+    
+
+    <script src="form.js"></script>
+</body>
+
+</html>
