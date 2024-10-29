@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Complaint System</title>
+    <link rel="stylesheet" href="style_02.css">
+</head>
+
+<body>
+    <header class="header">
+        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo">
+        <h1>Faculty Complaint System</h1>
+    </header>
+
+    <main class="container">
+        <div class="card" onclick="showContent('Electrical Appliances')">
+            <img src="electrical.png" alt="Electrical Appliances">
+            <p>Electrical Appliances</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('Plumbing')">
+            <img src="plumbing.png" alt="Plumbing">
+            <p>Plumbing</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('Internet Issues')">
+            <img src="internet.png" alt="Internet Issues">
+            <p>Internet Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+        
+        <div class="card" onclick="showContent('others')">
+            <img src="others.png" alt="others">
+            <p>Other Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+    </main>
+
+    <div id="content" class="content"></div>
+
+    <script src="form_02.js"></script>
+</body>
+
+</html>
