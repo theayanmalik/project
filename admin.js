@@ -13,7 +13,7 @@ function populateComplaints(status = "solved") {
     const filteredComplaints = complaints.filter((complaint) => complaint.status === status);
 
     if (filteredComplaints.length === 0) {
-        complaintsList.innerHTML = <p>No ${status} complaints found.</p>;
+        complaintsList.innerHTML = `<p>No ${status} complaints found.</p>`;
         return;
     }
 
@@ -27,7 +27,7 @@ function populateComplaints(status = "solved") {
                 <button onclick="viewComplaint(${complaint.id})">View</button>
                 ${
                     status === "unsolved"
-                        ? <button onclick="markAsSolved(${complaint.id})">Mark as Solved</button>
+                        ? `<button onclick="markAsSolved(${complaint.id})">Mark as Solved</button>`
                         : ""
                 }
             </div>
@@ -38,14 +38,14 @@ function populateComplaints(status = "solved") {
 
 function filterComplaints(status) {
     document.querySelectorAll(".tab-button").forEach((button) => button.classList.remove("active"));
-    document.querySelector(.tab-button[onclick="filterComplaints('${status}')"]).classList.add("active");
+    document.querySelector.tab-button[onclick="filterComplaints('${status}')"].classList.add("active");
 
     populateComplaints(status);
 }
 
 
 function viewComplaint(id) {
-    alert(Viewing details for complaint ID: ${id});
+    alert(`Viewing details for complaint ID: ${id}`);
 }
 
 function markAsSolved(id) {
@@ -65,6 +65,13 @@ function updateStats() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateStats();
-    populateComplaints("solved");
+    const complaintsList = document.getElementById('complaintsList');
+    const complaintId = 123; // Example complaint ID
+    const buttonHtml = `<button onclick="markAsSolved(${complaintId})">Mark as Solved</button>`;
+    complaintsList.innerHTML += buttonHtml;
+
+    // Example function to handle the button click
+    window.markAsSolved = function(id) {
+        alert(`Complaint ${id} marked as solved!`);
+    };
 });
