@@ -51,7 +51,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     if (email && password) {
         switch (role) {
             case 'student':
-                window.location.href = 'index.html';
+                window.location.href = 'student.html';
                 break;
                  
             case 'faculty':

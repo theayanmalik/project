@@ -1,60 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Complaint System</title>
+    <title>Portal Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="header">
-        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo">
-        <h1>Student Complaint System</h1>
-    </div>
-
-    <div class="container">
-        <div class="card" onclick="showContent('academic')">
-            <img src="https://img.icons8.com/dusk/64/classroom.png" alt="Academic Issues">
-            <p>Academic Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('hostel')">
-            <img src="https://img.icons8.com/dusk/64/sleeping-in-bed.png" alt="Hostel Complaints">
-            <p>Hostel Complaints</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('mess')">
-            <img src="https://img.icons8.com/dusk/64/m.png" alt="Mess Issues">
-            <p>Mess Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('library')">
-            <img src="https://img.icons8.com/dusk/64/books.png" alt="Library Concerns">
-            <p>Library Concerns</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('other')">
-            <img src="https://img.icons8.com/dusk/64/school.png" alt="Other Issues">
-            <p>Other Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('it')">
-            <img src="https://img.icons8.com/dusk/64/computer.png" alt="IT Support">
-            <p>IT Support</p>
-            <a href="document">&#8250;&#8250;</a>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Student Login</h2>
+            <p>Get all your stuff done here :)</p>
+            <form id="loginForm">
+                <input type="email" placeholder="Institute Email ID" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <label for="role">Role:</label>
+                <select id="role" required>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button type="submit">Login</button>
+                <p><a href="#">Forget/Change Password</a></p>
+            </form>
         </div>
     </div>
-
-    <div id="content" class="content"></div>
-
     <script src="form.js"></script>
 </body>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('background.jpg'); /* Optional: add a background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.login-box input,
+.login-box select,
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    background-color: #f0b90b;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #d9a20b;
+}
+</style>
 
 </html>
