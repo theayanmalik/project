@@ -69,11 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const complaintId = 123; // Example complaint ID
     const buttonHtml = `<button onclick="markAsSolved(${complaintId})">Mark as Solved</button>`;
     complaintsList.innerHTML += buttonHtml;
-<<<<<<< Updated upstream
-
-=======
-    
->>>>>>> Stashed changes
     // Example function to handle the button click
     window.markAsSolved = function(id) {
         alert(`Complaint ${id} marked as solved!`);
