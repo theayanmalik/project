@@ -173,6 +173,11 @@ input[type="submit"] {
     background-color: #d4e118;
     color: black;
 }
+.stat-card:hover
+        {
+           transform: translateY(-10px);
+           background-color: #d4e118;
+       }
 
 .complaints-list {
     display: flex;
@@ -200,7 +205,4 @@ input[type="submit"] {
     margin-left: 5px;
 }
 
-.complaint-actions button:hover {
-    background-color: #c1c711;
-}
 
