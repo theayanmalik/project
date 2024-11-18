@@ -1,6 +1,6 @@
 
 function showContent(type) {
-    var contentDiv = document.getElementById('content');
+ var contentDiv = document.getElementById('content');
 
     var formContent = `
         <div class="header">
@@ -55,7 +55,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
                 break;
                  
             case 'faculty':
-                window.location.href = 'shubhankar/index1.html';
+                window.location.href = 'shubhankar/index_01.html';
                 break;
             case 'admin':
                 window.location.href = 'admin-dashboard.html';
