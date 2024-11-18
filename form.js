@@ -20,6 +20,12 @@ function showContent(type) {
             <label for="category">Category:</label>
             <select id="category" name="category" required>
                 <option value="">Select Category</option>
+                <option value="">Hostel Complaints</option>
+                <option value="">Mess Issues</option>
+                <option value="">Library Concerns</option>
+                <option value="">IT Support</option>
+                <option value="">Other Issues</option>
+                
             </select><br>
 
             <label for="additional-info">Additional Information:</label>
