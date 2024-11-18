@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="https://img.icons8.com/dusk/64/university.png" alt="SETI Logo">
+        <h1>Admin Portal</h1>
+    </div>
+
+    <div class="admin-dashboard">
+        <div class="stats">
+            <div class="stat-card">
+                <h2>Total Complaints</h2>
+                <p id="total-complaints">99</p>
+            </div>
+            <div class="stat-card">
+                <h2>Solved Complaints</h2>
+                <p id="solved-complaints">56</p>
+            </div>
+            <div class="stat-card">
+                <h2>Unresolved Complaints</h2>
+                <p id="unsolved-complaints">43</p>
+            </div>
+        </div>
+        
+        <div class="complaints-section">
+            <div class="tabs">
+                <button class="tab-button active" onclick="filterComplaints('solved')">Solved Complaints</button>
+                <button class="tab-button" onclick="filterComplaints('unsolved')">Unresolved Complaints</button>
+            </div>
+
+            <div id="complaints-list" class="complaints-list">
+                <!-- Complaints will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://img.icons8.com/dusk/64/university.png" alt="College Logo">
+        <h1>Student Complaint System</h1>
+    </div>
+
+    <div class="container">
+        <div class="card" onclick="showContent('academic')">
+            <img src="https://img.icons8.com/dusk/64/classroom.png" alt="Academic Issues">
+            <p>Academic Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('hostel')">
+            <img src="https://img.icons8.com/dusk/64/sleeping-in-bed.png" alt="Hostel Complaints">
+            <p>Hostel Complaints</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('mess')">
+            <img src="https://img.icons8.com/dusk/64/m.png" alt="Mess Issues">
+            <p>Mess Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('library')">
+            <img src="https://img.icons8.com/dusk/64/books.png" alt="Library Concerns">
+            <p>Library Concerns</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('other')">
+            <img src="https://img.icons8.com/dusk/64/school.png" alt="Other Issues">
+            <p>Other Issues</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+
+        <div class="card" onclick="showContent('it')">
+            <img src="https://img.icons8.com/dusk/64/computer.png" alt="IT Support">
+            <p>IT Support</p>
+            <a href="document">&#8250;&#8250;</a>
+        </div>
+    </div>
+
+    <div id="content" class="content"></div>
+
+    <script src="form.js"></script>
+</body>
+
+</html>

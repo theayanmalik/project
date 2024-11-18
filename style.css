@@ -126,3 +126,81 @@ input[type="submit"] {
         grid-template-columns: 1fr; 
     }
 }
+
+.admin-dashboard {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #002838;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(203, 205, 153, 0.771);
+}
+
+.complaints-section {
+    background-color: #073642;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: #002838;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #d4e118;
+    color: black;
+}
+
+.complaints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.complaint-card {
+    background-color: #002838;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.complaint-actions button {
+    background-color: #d4e118;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.complaint-actions button:hover {
+    background-color: #c1c711;
+}
