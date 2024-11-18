@@ -28,6 +28,7 @@ function showContent(type) {
             <button type="submit">Submit Your Complaint</button>
         </form>
     `;
+    
 
 
     contentDiv.innerHTML = formContent;
@@ -38,3 +39,31 @@ function showContent(type) {
 
     contentDiv.scrollIntoView({ behavior: 'smooth' });
 }
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const role = document.getElementById('role').value;
+
+
+    if (email && password) {
+        switch (role) {
+            case 'student':
+                window.location.href = 'index.html';
+                break;
+                 
+            case 'faculty':
+                window.location.href = 'shubhankar/index1.html';
+                break;
+            case 'admin':
+                window.location.href = 'admin-dashboard.html';
+                break;
+            default:
+                alert('Please select a valid role.');
+        }
+    } else {
+        alert('Please enter both email and password.');
+    }
+});
