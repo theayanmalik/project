@@ -1,10 +1,8 @@
-const complaints =
- [
+const complaints = [
     { id: 1, title: "Complaint regarding harassment", status: "solved" },
     { id: 2, title: "Complaint regarding repair", status: "unsolved" },
     { id: 3, title: "Complaint regarding teaching", status: "solved" },
 ];
-
 
 function populateComplaints(status = "solved") {
     const complaintsList = document.getElementById("complaints-list");
@@ -38,11 +36,10 @@ function populateComplaints(status = "solved") {
 
 function filterComplaints(status) {
     document.querySelectorAll(".tab-button").forEach((button) => button.classList.remove("active"));
-    document.querySelector.tab-button[onclick="filterComplaints('${status}')"].classList.add("active");
+    document.querySelector(`.tab-button[onclick="filterComplaints('${status}')"]`).classList.add("active");
 
     populateComplaints(status);
 }
-
 
 function viewComplaint(id) {
     alert(`Viewing details for complaint ID: ${id}`);
@@ -63,14 +60,10 @@ function updateStats() {
     document.getElementById("unsolved-complaints").innerText = complaints.filter((c) => c.status === "unsolved").length;
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const complaintsList = document.getElementById('complaintsList');
-    const complaintId = 123; // Example complaint ID
-    const buttonHtml = `<button onclick="markAsSolved(${complaintId})">Mark as Solved</button>`;
-    complaintsList.innerHTML += buttonHtml;
-    // Example function to handle the button click
-    window.markAsSolved = function(id) {
-        alert(`Complaint ${id} marked as solved!`);
-    };
+    // Populate the initial complaints list
+    populateComplaints("unsolved"); // or "solved" based on your requirement
+
+    // Initialize stats
+    updateStats();
 });
