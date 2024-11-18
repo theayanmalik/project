@@ -14,9 +14,11 @@ body {
 }
 
 .header img {
-    width: 80px;
+    width: 50px;
     height: auto;
+    zoom: 200%;
     margin-bottom: 10px;
+    border-radius: 50px;
 }
 
 .header h1 {
@@ -145,6 +147,7 @@ input[type="submit"] {
     padding: 20px;
     border-radius: 15px;
     width: 30%;
+    margin-left: 10px;
     box-shadow: 0 4px 8px rgba(203, 205, 153, 0.771);
 }
 
