@@ -54,7 +54,6 @@ exports.registerUser = asyncHandler(async (req, res) => {
     password: hashedPassword,
     role: 'student',
   });
-
   res.status(201).json({
     token: generateToken(user),
     user: {

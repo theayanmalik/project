@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
 
-router.get('/profile', protect, userController.getProfile);
+router.get('/profile',protect, userController.getProfile);
 router.put('/profile', protect, userController.updateProfile);
 router.get('/', protect, adminOnly, userController.getAllUsers);
 router.get('/:id', protect, adminOnly, userController.getUserById);

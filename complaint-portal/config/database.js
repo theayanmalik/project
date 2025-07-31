@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
+dotenv.config();
 
-dotenv.config({ quiet: true });
 const dbConnect = async () => {
     try {
         await mongoose.connect(process.env.DATABASE_URL);
