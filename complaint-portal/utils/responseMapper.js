@@ -1,8 +1,7 @@
-
 const mapUserResponse = (user) => ({
-  _id: user._id,
-  name: user.name,
-  email: user.email,
+  id: user._id?.toString(),   // expose as "id" instead of "_id"
+  name: user.name|| user.instituteEmailId.split("@")[0],
+  email: user.instituteEmailId || user.email, // use consistent field
   role: user.role,
 });
 

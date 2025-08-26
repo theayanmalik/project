@@ -1,47 +1,162 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Admin Portal - Complaint System</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #d1d5db;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-color: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: -2rem; /* Merge with container */
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header button {
+            background-color: #ef4444;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .header button:hover {
+            background-color: #dc2626;
+        }
+
+        .dashboard-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+        }
+
+        .nav-btn {
+            background-color: var(--secondary-color);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .stat-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .complaints-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .complaint-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+        }
+        .complaint-actions button {
+            border: 5px;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background-color 0.2s;
+        }
+        .complaint-actions .resolve {
+            background-color: #10b981;
+            color: white;
+            margin-right: 0.5rem;
+        }
+        .complaint-actions .delete {
+            background-color: #e62222;
+            color: white;
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
-        <img src="shubhankar/iiitbgp.png" alt="SETI Logo">
-        <h1>Admin Portal</h1>
+        <h1>Admin Complaint Portal</h1>
+        <button onclick="logout()">Logout</button>
     </div>
 
-    <div class="admin-dashboard">
-        <div class="stats">
-            <div class="stat-card">
-                <h2>Total Complaints</h2>
-                <p id="total-complaints">1</p>
-            </div>
-            <div class="stat-card">
-                <h2>Solved Complaints</h2>
-                <p id="solved-complaints">0</p>
-            </div>
-            <div class="stat-card">
-                <h2>Unresolved Complaints</h2>
-                <p id="unsolved-complaints">0</p>
-            </div>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <div id="dashboard-stats">Loading...</div>
+        
+        <div class="dashboard-nav">
+            <button id="pending-btn" onclick="showPendingComplaints()" class="nav-btn active">Pending Complaints</button>
+            <button id="resolved-btn" onclick="showResolvedComplaints()" class="nav-btn">Resolved Complaints</button>
+            <button id="all-btn" onclick="showAllComplaints()" class="nav-btn">All Complaints</button>
         </div>
         
-        <div class="complaints-section">
-            <div class="tabs">
-                <button class="tab-button active" onclick="filterComplaints('solved')">Solved Complaints</button>
-                <button class="tab-button" onclick="filterComplaints('unsolved')">Unresolved Complaints</button>
-            </div>
-
-            <div id="complaints-list" class="complaints-list">
-            
-            </div>
+        <div id="complaints-section">
+            <h3 id="complaints-title">Pending Complaints</h3>
+            <div id="complaints-list">Loading...</div>
         </div>
     </div>
-    <div id="complaintsList"></div>
+    <script src="api.js"></script>
     <script src="admin.js"></script>
+    
 </body>
 </html>

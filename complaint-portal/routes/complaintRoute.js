@@ -1,14 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const complaintController = require('../controllers/complaintController');
 const { protect, adminOnly } = require('../middleware/authMiddleware');
+const multer = require('multer');
+const path = require('path');
 
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname));
+  }
+});
 
-router.get('/profile',protect, userController.getProfile);
-router.put('/profile', protect, userController.updateProfile);
-router.get('/', protect, adminOnly, userController.getAllUsers);
-router.get('/:id', protect, adminOnly, userController.getUserById);
-router.delete('/:id', protect, adminOnly, userController.deleteUser);
-router.patch('/:id/role', protect, adminOnly, userController.updateUserRole);
+const upload = multer({ storage: storage });
+
+// Complaint routes
+router.post('/submit', protect, upload.single('file'), complaintController.submitComplaint);
+router.get('/my-complaints', protect, complaintController.getMyComplaints);
+router.get('/admin/dashboard', protect, adminOnly, complaintController.getAdminDashboardData);
+router.patch('/:id/resolve', protect, complaintController.resolveComplaint);
+router.delete('/:id', protect, complaintController.deleteComplaint);
 
 module.exports = router;

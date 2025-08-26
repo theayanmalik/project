@@ -49,11 +49,11 @@ exports.deleteUser = asyncHandler(async (req, res) => {
     return res.status(403).json({ message: 'Cannot delete admin user' });
   }
 
-  await user.remove();
+  await user.deleteOne();
 
   console.info(`[Audit] Admin ${req.user.instituteEmailId} deleted user ${user.instituteEmailId}`);
 
-  res.status(200).json({ message: 'User deleted successfully' });
+  res.status(200).json({ message: 'User deleted successfully' ,id:user._id});
 });
 
 exports.updateUserRole = asyncHandler(async (req, res) => {

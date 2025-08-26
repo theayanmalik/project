@@ -35,13 +35,14 @@ exports.loginUser = asyncHandler(async (req, res) => {
     user: {
       _id: user._id,
       email: user.instituteEmailId,
+      name: user.name,
       role: user.role,
     },
   });
 });
 
 exports.registerUser = asyncHandler(async (req, res) => {
-  const { instituteEmailId, password } = req.body;
+  const { instituteEmailId, password, name, role } = req.body;
 
   const existingUser = await User.findOne({ instituteEmailId });
   if (existingUser) {
@@ -52,13 +53,15 @@ exports.registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     instituteEmailId,
     password: hashedPassword,
-    role: 'student',
+    name: name || '',
+    role: role || 'student',
   });
   res.status(201).json({
     token: generateToken(user),
     user: {
       _id: user._id,
       email: user.instituteEmailId,
+      name: user.name,
       role: user.role,
     },
   });

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const Complaint = require('../models/complaint');
+const Complaint = require('../models/Complaint');
 const asyncHandler = require('express-async-handler');
 
 
@@ -81,11 +81,29 @@ exports.getAdminDashboardData = asyncHandler(async (req, res) => {
   const solvedComplaints = await Complaint.countDocuments({ status: 'resolved' });
   const unresolvedComplaints = await Complaint.countDocuments({ status: 'unresolved' });
 
-  const recentUnresolvedComplaints = await Complaint.find({ status: 'unresolved' })
+  console.log('[Admin Dashboard Debug] Complaint counts:', {
+    total: totalComplaints,
+    solved: solvedComplaints,
+    unresolved: unresolvedComplaints
+  });
+
+  const recentUnresolvedComplaints = (await Complaint.find({ status: 'unresolved' })
     .sort({ createdAt: -1 })
     .limit(10)
-    .select('title createdAt')
-    .lean();
+    .populate('student', 'name instituteEmailId')
+    .select('title description createdAt category student status')
+    .lean()).map(complaint => mapComplaintResponse(complaint));
+
+  const recentResolvedComplaints = (await Complaint.find({ status: 'resolved' })
+    .sort({ createdAt: -1 })
+    .limit(10)
+    .populate('student', 'name instituteEmailId')
+    .populate('resolvedBy', 'name instituteEmailId')
+    .select('title description createdAt category student resolvedBy resolutionNotes status')
+    .lean()).map(complaint => mapComplaintResponse(complaint));
+
+  console.log('[Admin Dashboard Debug] Unresolved complaints found:', recentUnresolvedComplaints.length);
+  console.log('[Admin Dashboard Debug] Resolved complaints found:', recentResolvedComplaints.length);
 
   res.json({
     counts: {
@@ -94,6 +112,7 @@ exports.getAdminDashboardData = asyncHandler(async (req, res) => {
       unresolved: unresolvedComplaints,
     },
     recentUnresolvedComplaints,
+    recentResolvedComplaints,
   });
 });
 
@@ -152,5 +171,36 @@ exports.getMyComplaints = asyncHandler(async (req, res) => {
     total,
     page,
     pages: Math.ceil(total / limit),
+  });
+});
+
+exports.deleteComplaint = asyncHandler(async (req, res) => {
+  const complaintId = req.params.id;
+
+  if (!mongoose.isValidObjectId(complaintId)) {
+    return res.status(400).json({ message: 'Invalid complaint ID' });
+  }
+
+  const complaint = await Complaint.findById(complaintId);
+  if (!complaint) {
+    return res.status(404).json({ message: 'Complaint not found' });
+  }
+
+  // Check if user is admin or the owner of the complaint
+  if (req.user.role !== 'admin' && complaint.student.toString() !== req.user.id) {
+    return res.status(403).json({ message: 'Access denied' });
+  }
+
+  // Delete associated file if exists
+  if (complaint.filePath) {
+    fs.unlink(path.resolve(complaint.filePath), (err) => {
+      if (err) console.log('Error deleting file:', err);
+    });
+  }
+
+  await Complaint.findByIdAndDelete(complaintId);
+
+  res.json({
+    message: 'Complaint deleted successfully'
   });
 });
