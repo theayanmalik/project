@@ -121,18 +121,6 @@ project_01/
 └── style.css                # Styles
 ```
 
-## Default Admin Account
-
-To create an admin account, you can use the admin creation endpoint or manually insert into the database:
-
-```javascript
-// Example admin user
-{
-  instituteEmailId: "admin@institute.edu",
-  password: "hashedPassword", // Use bcrypt to hash
-  role: "admin"
-}
-```
 
 ## Contributing
 
