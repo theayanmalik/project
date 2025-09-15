@@ -405,6 +405,11 @@ button[type="submit"]:hover {
     transform: translateY(-1px);
     box-shadow: var(--shadow-lg);
 }
+.stat-card:hover
+        {
+           transform: translateY(-10px);
+           background-color: #d4e118;
+       }
 
 /* Admin Dashboard Styles */
 .stats {
@@ -431,12 +436,14 @@ button[type="submit"]:hover {
     letter-spacing: 0.05em;
 }
 
+
 .stat-item p {
     color: var(--primary-color);
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
