@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Complaint System</title>
+    <title>Student Portal - Complaint System</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="header">
-        <img src="shubhankar/iiitbgp.png" alt="College Logo">
-        <h1>Student Complaint System</h1>
+        <img src="iiitbgp.png" alt="IIIT BGP Logo">
+        <h1>Student Complaint Portal</h1>
+        <button onclick="logout()">Logout</button>
     </div>
 
-    <div class="container">
-        <div class="card" onclick="showContent('academic')">
-            <img src="https://img.icons8.com/dusk/64/classroom.png" alt="Academic Issues">
-            <p>Academic Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
+    <div class="dashboard-nav">
+        <button id="categories-btn" onclick="showCategories()" class="nav-btn active">Submit Complaint</button>
+        <button id="my-complaints-btn" onclick="showMyComplaints()" class="nav-btn">My Complaints</button>
+    </div>
 
-        <div class="card" onclick="showContent('hostel')">
-            <img src="https://img.icons8.com/dusk/64/sleeping-in-bed.png" alt="Hostel Complaints">
-            <p>Hostel Complaints</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('mess')">
-            <img src="https://img.icons8.com/dusk/64/m.png" alt="Mess Issues">
-            <p>Mess Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('library')">
-            <img src="https://img.icons8.com/dusk/64/books.png" alt="Library Concerns">
-            <p>Library Concerns</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('other')">
-            <img src="https://img.icons8.com/dusk/64/school.png" alt="Other Issues">
-            <p>Other Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('it')">
-            <img src="https://img.icons8.com/dusk/64/computer.png" alt="IT Support">
-            <p>IT Support</p>
-            <a href="document">&#8250;&#8250;</a>
+    <div id="categories-section" class="categories">
+        <h2>Select Complaint Category</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="showComplaintSection('Academic Issues')">
+                <img src="academic.png" alt="Academic" class="category-icon">
+                <h3>Academic</h3>
+                <p>Issues related to courses, exams, grades</p>
+            </div>
+            <div class="category-card" onclick="showComplaintSection('Infrasturcture Problems')">
+                <img src="infrastructure.png" alt="Infrastructure" class="category-icon">
+                <h3>Infrastructure</h3>
+                <p>Hostel, library, lab facilities</p>
+            </div>
+            <div class="category-card" onclick="showComplaintSection('Administration Complaints')">
+                <img src="administrative.png" alt="Administrative" class="category-icon">
+                <h3>Administrative</h3>
+                <p>Fee, documentation, registration</p>
+            </div>
+            <div class="category-card" onclick="showComplaintSection('Technical Difficulties')">
+                <img src="technical.png" alt="Technical" class="category-icon">
+                <h3>Technical</h3>
+                <p>IT support, software, hardware</p>
+            </div>
+            <div class="category-card" onclick="showComplaintSection('Other Issues')">
+                <img src="other.png" alt="Other" class="category-icon">
+                <h3>Other</h3>
+                <p>General complaints and suggestions</p>
+            </div>
         </div>
     </div>
 
-    <div id="content" class="content"></div>
+    <div id="complaint-list" class="content" style="display: none;">
+        <h2>My Complaints</h2>
+        <div id="complaints-container">Loading...</div>
+    </div>
 
-    <script src="form.js"></script>
+    <script src="api.js"></script>
+    <script src="student.js"></script>
 </body>
-
 </html>

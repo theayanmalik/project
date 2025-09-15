@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Complaint System</title>
-    <link rel="stylesheet" href="style_02.css">
+    <title>Faculty Portal - Complaint System</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-    <header class="header">
-        <img src="iiitbgp.png" alt="College Logo">
-        <h1>Faculty Complaint System</h1>
-    </header>
-
-    <main class="container">
-        <div class="card" onclick="showContent('Electrical Appliances')">
-            <img src="electrical.png" alt="Electrical Appliances">
-            <p>Electrical Appliances</p>
-            <a href="document">&#8250;&#8250;</a>
+    <div class="header">
+        <img src="iiitbgp.png" alt="IIIT BGP Logo">
+        <h1>Faculty Complaint Portal</h1>
+        <button onclick="logout()">Logout</button>
+                        <option value="Academic Issues">Academic Issues</option>
+                        <option value="IT Support">IT Support</option>
+                        <option value="Library Concerns">Library Concerns</option>
+                        <option value="Other Issues">Other Issues</option>
+                    </select>
+                </div>
+                
+                <div class="category-icons">
+                    <div class="icon-item" data-category="Electrical Appliances">
+                        <img src="electrical.png" alt="Electrical">
+                        <span>Electrical Issues</span>
+                    </div>
+                    <div class="icon-item" data-category="Plumbing">
+                        <img src="plumbing.png" alt="Plumbing">
+                        <span>Plumbing Issues</span>
+                    </div>
+                    <div class="icon-item" data-category="Internet Issues">
+                        <img src="internet.png" alt="Internet">
+                        <span>Internet Issues</span>
+                    </div>
+                    <div class="icon-item" data-category="Other Issues">
+                        <img src="others.png" alt="Others">
+                        <span>Other Issues</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attachments">Attachments (Optional):</label>
+                    <input type="file" id="attachments" name="attachments" multiple accept=".jpg,.jpeg,.png,.pdf">
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Complaint</button>
+            </form>
         </div>
-
-        <div class="card" onclick="showContent('Plumbing')">
-            <img src="plumbing.png" alt="Plumbing">
-            <p>Plumbing</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-
-        <div class="card" onclick="showContent('Internet Issues')">
-            <img src="internet.png" alt="Internet Issues">
-            <p>Internet Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-        
-        <div class="card" onclick="showContent('others')">
-            <img src="others.png" alt="others">
-            <p>Other Issues</p>
-            <a href="document">&#8250;&#8250;</a>
-        </div>
-    </main>
-
-    <div id="content" class="content"></div>
-
+    </div>
+    
     <script src="form_02.js"></script>
 </body>
-
 </html>

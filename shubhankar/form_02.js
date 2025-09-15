@@ -1,44 +1,82 @@
+// Form handling for complaint submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('complaintForm');
+    const categoryIcons = document.querySelectorAll('.icon-item');
+    const categorySelect = document.getElementById('complaintCategory');
 
-function showContent(type) {
-    var contentDiv = document.getElementById('content');
+    // Category icon selection
+    categoryIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Remove active class from all icons
+            categoryIcons.forEach(i => i.classList.remove('active'));
+            
+            // Add active class to clicked icon
+            this.classList.add('active');
+            
+            // Update select dropdown
+            const category = this.dataset.category;
+            categorySelect.value = getCategoryValue(category);
+        });
+    });
 
-    var formContent = `
-        <div class="header">
-            <h1>Add Complaint - ` + type + `</h1>
-        </div>
+    // Map display categories to form values
+    function getCategoryValue(displayCategory) {
+        const categoryMap = {
+            'Electrical Appliances': 'IT Support',
+            'Plumbing': 'Other Issues',
+            'Internet Issues': 'IT Support',
+            'Other Issues': 'Other Issues'
+        };
+        return categoryMap[displayCategory] || 'Other Issues';
+    }
 
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData();
+        formData.append('title', document.getElementById('complaintTitle').value);
+        formData.append('description', document.getElementById('complaintDescription').value);
+        formData.append('category', document.getElementById('complaintCategory').value);
+        
+        // Add file if selected
+        const fileInput = document.getElementById('attachments');
+        if (fileInput.files[0]) {
+            formData.append('file', fileInput.files[0]);
+        }
 
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required><br>
+        try {
+            const response = await fetch('/api/complaints/submit', {
+                method: 'POST',
+                headers: {
+                    'x-auth-token': localStorage.getItem('authToken')
+                },
+                body: formData
+            });
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea><br>
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert('Complaint submitted successfully!');
+                form.reset();
+                categoryIcons.forEach(i => i.classList.remove('active'));
+            } else {
+                alert('Error: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error submitting complaint:', error);
+            alert('Error submitting complaint. Please try again.');
+        }
+    });
+});
 
-            <label for="category">Category:</label>
-            <select id="category" name="category" required>
-                <option value="">Select Category</option>
-                <option value="">Electrical Appliances</option>
-                <option value="">Plumbing</option>
-                <option value="">Internet</option>
-                <option value="">Other</option>
-            </select><br>
-
-            <label for="additional-info">Additional Information:</label>
-            <input type="file" id="additional-info" name="additional-info"><br>
-
-            <button type="submit">Submit</button>
-        </form>
-    `;
-
-
-    contentDiv.innerHTML = formContent;
-
-
-    contentDiv.style.display = 'block';
-
-
-    contentDiv.scrollIntoView({ behavior: 'smooth' });
+// Check if user is authenticated
+function checkAuth() {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        window.location.href = '/login.html';
+    }
 }
+
+// Call auth check on page load
+checkAuth();
